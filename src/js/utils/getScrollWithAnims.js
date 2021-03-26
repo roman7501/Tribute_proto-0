@@ -3,23 +3,25 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import LocomotiveScroll from "locomotive-scroll";
 
+import ProgressBar from "../progressBar.js";
 import Header from "../header.js";
 import Lines from "../lines.js";
 import MoonMap from "../moonMap.js";
 import Reverse from "../reverse.js";
 import Particules from "../particules.js";
-import ProgressBar from "../progressBar.js";
+import Sea from "../sea.js";
 
 export default class getScrollWithAnims {
   constructor() {
     gsap.registerPlugin(ScrollTrigger);
 
+    this.progressBar = new ProgressBar();
     this.header = new Header();
     this.lines = new Lines();
     this.moonMap = new MoonMap();
     this.reverse = new Reverse();
     this.particules = new Particules();
-    this.progressBar = new ProgressBar();
+    this.sea = new Sea();
 
     this.scrollPosition = null;
 
@@ -67,6 +69,7 @@ export default class getScrollWithAnims {
     this.moonMap.anim();
     this.reverse.anim();
     this.particules.anim();
+    this.sea.anim();
 
     /**
      * Scroll event listener

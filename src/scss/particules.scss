@@ -1,70 +1,58 @@
 .particules {
   position: relative;
   width: 100%;
-  .sun-map__container {
-    width: 80vw;
-    margin: 0 auto;
+  .particules__container {
+    top: 10px;
+    width: 100%;
+    // display: none;
   }
+  // .sun-map__container {
+  //   // position: absolute;
+  //   // margin-top: -850vh;
+  //   width: 80vw;
+  // }
   svg {
     height: auto !important;
   }
-  .kiss {
-    color: #fc00bd;
-    font-size: 180px;
+  .kiss__container {
     position: absolute;
-    white-space: nowrap;
-    span {
-      margin-right: 300px;
-    }
-  }
-  #kiss-1 {
-    top: 380vh;
-    overflow: hidden;
-    .kiss-overflow {
-      width: 1000vw;
-      font-size: 0px;
-    }
-    .kiss-1-span {
+    top: 640vh;
+    height: auto;
+    .kiss {
+      color: #fc00bd;
       font-size: 180px;
-      display: inline-block;
-      transform: translateX(0);
+      white-space: nowrap;
+      overflow: hidden;
+      transform-origin: left;
+      .kiss-overflow {
+        width: 1000vw;
+        font-size: 0px;
+        .kiss-text {
+          font-size: 180px;
+          display: inline-block;
+          transform: translateX(0);
+        }
+      }
+      span {
+        margin-right: 300px;
+      }
     }
-    // transform: rotate(-6deg);
-  }
-  #kiss-2 {
-    top: 409vh;
-    transform: rotate(2deg) translateX(-50%);
-  }
-  #kiss-3 {
-    top: 425vh;
-  }
-  #kiss-4 {
-    top: 465vh;
-    opacity: 0.2;
-    transform: rotate(180deg) translateX(20%);
-  }
-
-  .kill-wrapper {
-    background-image: url("/assets/img/sea-bg.png");
-    background-size: cover;
-    background-repeat: repeat-x;
-    height: 100px;
-    position: absolute;
-    top: 555vh;
-    left: 10vw;
-    background-clip: text;
-    -webkit-background-clip: text;
-    p {
-      color: transparent;
+    #kiss-1 {
+      margin-top: 0;
+      transform: rotate(-2deg);
     }
-  }
-
-  @mixin keyframes($animationWaves) {
-    from {
-      background-position-x: 0;
+    #kiss-2 {
+      margin-top: -50px;
+      transform: rotate(2deg) translateX(-200px);
     }
-    to {
-      background-position-x: 100%;
+    #kiss-3 {
+      margin-top: 0px;
+      top: 425vh;
+    }
+    #kiss-4 {
+      margin-top: -100px;
+      opacity: 0.2;
+      transform: rotate(-4deg) translateX(-100px);
     }
   }
 }

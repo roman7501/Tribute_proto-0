@@ -5,20 +5,29 @@ import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
 
 import lottie from "lottie-web";
 import data from "./animations/data.json";
+import data2 from "./animations/data-2.json";
 
 export default class Particules {
   constructor() {
     gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin, MorphSVGPlugin);
 
     this.sunMapContainer = document.querySelector(".sun-map__container");
-
+    this.particulesContainer = document.querySelector(".particules__container");
     lottie.loadAnimation({
-      container: this.sunMapContainer, // the dom element that will contain the animation
+      container: this.particulesContainer, // the dom element that will contain the animation
       renderer: "svg",
       loop: true,
       autoplay: true,
       animationData: data,
     });
+
+    // lottie.loadAnimation({
+    //   container: this.sunMapContainer, // the dom element that will contain the animation
+    //   renderer: "svg",
+    //   loop: true,
+    //   autoplay: false,
+    //   animationData: data2,
+    // });
   }
 
   anim() {
@@ -27,52 +36,43 @@ export default class Particules {
   }
 
   animKissText() {
-    this.textSize = document.getElementById("kiss-1").getBoundingClientRect().width;
+    this.kissEls = document.querySelectorAll(".kiss");
 
-    gsap.fromTo(
-      ".kiss-1-span",
-      {
-        x: 0,
-      },
-      {
-        scrollTrigger: {
-          scroller: "[data-scroll-container]",
-          trigger: ".particules",
-          start: "top top",
+    this.kissEls.forEach((kiss) => {
+      this.kissTexts = kiss.querySelectorAll(".kiss-text");
+
+      gsap.fromTo(
+        this.kissTexts,
+        {
+          x: 0,
         },
-        // transformOrigin: "center center",
-        x: "-100%",
-        repeat: -1,
-        duration: 15,
-        ease: "linear",
-        stagger: 0,
-      }
-    );
-    // gsap.to("#kiss-2", {
-    //   scrollTrigger: {
-    //     scroller: "[data-scroll-container]",
-    //     trigger: ".particules",
-    //     start: "top top",
-    //   },
-    //   x: "50%",
-    //   yoyo: true,
-    //   repeat: -1,
-    //   duration: 45,
-    //   ease: "linear",
-    // });
+        {
+          scrollTrigger: {
+            scroller: "[data-scroll-container]",
+            trigger: ".particules",
+            start: "top top",
+          },
+          // transformOrigin: "center center",
+          x: "-100%",
+          repeat: -1,
+          duration: 15,
+          ease: "linear",
+          stagger: 0,
+        }
+      );
+    });
   }
 
   animTextSea() {
     gsap.to(".kill-wrapper", {
       scrollTrigger: {
         scroller: "[data-scroll-container]",
-        trigger: ".particules",
-        start: "top top",
+        trigger: ".kill-wrapper",
+        start: "top bottom",
       },
-      backgroundPosition: "-2247px -80px",
-      yoyo: true,
+      backgroundPositionX: `-100vw`,
       repeat: -1,
-      duration: 25,
+      duration: 20,
       ease: "linear",
     });
   }
