@@ -10,13 +10,21 @@
 
     text-transform: uppercase;
     color: #fff;
-    text-align: center;
+
+    // display: flex;
+    // flex-direction: column;
 
     position: absolute;
     z-index: 2;
     top: 50vh;
     left: 2%;
     transform: translate3d(0, -50%, 0);
+  }
+  .desc {
+    // border: 1px solid white;
+    margin-top: 30px;
+    margin-left: 60px;
+    // font-size: 1.8vw;
   }
 
   .info {
@@ -28,31 +36,5 @@
     opacity: 1;
     letter-spacing: 0.5px;
     opacity: 0.7;
-  }
-  .desc {
-    font-family: jaf-domus-titling-web, sans-serif;
-    font-weight: 200;
-    font-style: normal;
-    font-size: 2.5vw;
-    text-transform: uppercase;
-    color: #fff;
-
-    position: absolute;
-    top: 178vh;
-    left: 2%;
-    width: 100%;
-    opacity: 1;
-  }
-  .desc-2 {
-    transform: translateY(80%);
-    opacity: 0.14;
-  }
-  .desc-3 {
-    transform: translateY(164%);
-    opacity: 0.07;
-  }
-  .desc-4 {
-    transform: translateY(182%);
-    opacity: 0.03;
   }
 }

@@ -23,6 +23,7 @@ export default class Header {
           scrub: true,
         },
         opacity: 0,
+        ease: "linear",
       }
     );
 
@@ -34,47 +35,42 @@ export default class Header {
       end: "top bottom-=300",
       scrub: true,
       pin: true,
+      ease: "linear",
     });
 
-    this.animDesc();
-  }
-
-  animDesc() {
-    this.tl = gsap.timeline({
+    const tl = gsap.timeline({
       scrollTrigger: {
         scroller: "[data-scroll-container]",
-        trigger: ".lines",
-        start: "top bottom-=300",
-        toggleActions: "play pause reverse reverse",
+        trigger: ".info",
+        start: "center center+=300",
+        endTrigger: ".lines",
+        end: "top bottom-=300",
+        scrub: true,
       },
+      ease: "linear",
     });
-    this.tl.fromTo(
-      ".desc-shadow",
+
+    tl.to(".title h1 span", {
+      opacity: 0,
+      x: -100,
+    });
+
+    tl.to(
+      ".title .title-top",
       {
-        opacity: 0,
-      },
-      {
-        opacity: 1,
-        duration: 1,
-        stagger: 0.1,
-      }
-    );
-    this.tl.to(
-      "#desc-1",
-      {
-        opacity: 0.14,
-        delay: 0.3,
-        duration: 0.5,
+        x: -150,
       },
       "<"
     );
-    this.tl.to(
-      ".desc-shadow",
+    tl.fromTo(
+      ".title .desc",
       {
-        opacity: 0.2,
-        duration: 1,
-        delay: 0.3,
-        stagger: 0.1,
+        opacity: 0,
+        x: 200,
+      },
+      {
+        opacity: 1,
+        x: 0,
       },
       "<"
     );

@@ -23,11 +23,11 @@ export default class ProgressBar {
       {
         scrollTrigger: {
           scroller: "[data-scroll-container]",
-          trigger: "#intro-1",
-          start: "center center",
+          trigger: ".lines",
+          start: "top+=100 top",
         },
         scaleX: 1,
-        delay: 0.5,
+        delay: 1.5,
         duration: 0.5,
       }
     );

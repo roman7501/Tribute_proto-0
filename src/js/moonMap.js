@@ -16,34 +16,6 @@ export default class MoonMap {
     this.metamorphose();
   }
 
-  // getMousePosition() {
-  //   window.addEventListener("mousemove", (e) => {
-  //     this.mouse.x = e.clientX / window.innerWidth;
-  //     this.mouse.y = e.clientY / window.innerHeight;
-
-  //     gsap.to(this.mouseEased.x, { value: this.mouse.x, ease: "power2.inOut", duration: 1 });
-
-  //     //  TM.to(this.loadedEased, 4.7, {
-  //     //    value: this.indexLoaded,
-  //     //    ease: Power3,
-  //     //  });
-
-  //     // console.log(this.mouseEased.x);
-  //   });
-  // }
-
-  // hoverMoons() {
-  //   this.moonMap = document.querySelector(".moon-map__container");
-
-  //   const moonsPath = document.querySelectorAll(".moon-path");
-
-  //   window.addEventListener("mousemove", () => {
-  //     moonsPath.forEach((moonEl) => {
-  //       moonEl.style.transform = `translate3d(${-15 * this.mouse.x}px, ${-5 * this.mouse.y}px, 0)`;
-  //     });
-  //   });
-  // }
-
   animCircleCenter() {
     gsap.fromTo(
       "#small-circle, #small-line-1, #small-line-2",
@@ -58,6 +30,7 @@ export default class MoonMap {
         opacity: 0.5,
         delay: 0.3,
         duration: 3.7,
+        ease: "linear",
       }
     );
   }
@@ -70,11 +43,13 @@ export default class MoonMap {
       {
         scrollTrigger: {
           scroller: "[data-scroll-container]",
-          trigger: ".lines",
-          start: "top top-=200",
+          trigger: "#text-2",
+          start: "center bottom-=200",
+          endTrigger: ".lines",
           end: "bottom bottom",
           scrub: true,
         },
+        ease: "linear",
       },
       "<"
     );
@@ -86,7 +61,6 @@ export default class MoonMap {
         drawSVG: 0,
         scale: 5,
         opacity: 0,
-        ease: "power2.inOut",
       },
       "<"
     );
@@ -126,6 +100,8 @@ export default class MoonMap {
         start: "top top",
       },
       opacity: 0,
+      duration: 3,
+      ease: "linear",
     });
     gsap.from("#moon-8,#moon-4,#moon-5, #moon-3, #moon-7", {
       scrollTrigger: {
@@ -134,6 +110,8 @@ export default class MoonMap {
         start: "top top",
       },
       opacity: 0,
+      duration: 3,
+      ease: "linear",
     });
     gsap.from("#moon-path__wrapper", {
       scrollTrigger: {
@@ -143,7 +121,8 @@ export default class MoonMap {
       },
       transformOrigin: "center center",
       rotation: -50,
-      duration: 0.5,
+      duration: 2.5,
+      ease: "linear",
     });
   }
 

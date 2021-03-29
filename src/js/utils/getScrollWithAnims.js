@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import LocomotiveScroll from "locomotive-scroll";
 
 import ProgressBar from "../progressBar.js";
+import Subtitles from "../subtitles.js";
 import Header from "../header.js";
 import Lines from "../lines.js";
 import MoonMap from "../moonMap.js";
@@ -22,6 +23,7 @@ export default class getScrollWithAnims {
     this.reverse = new Reverse();
     this.particules = new Particules();
     this.sea = new Sea();
+    this.subtitles = new Subtitles();
 
     this.scrollPosition = null;
 
@@ -70,6 +72,7 @@ export default class getScrollWithAnims {
     this.reverse.anim();
     this.particules.anim();
     this.sea.anim();
+    this.subtitles.anim();
 
     /**
      * Scroll event listener

@@ -1,0 +1,26 @@
+.subtitles {
+  border-bottom: 0.5px solid rgba(241, 239, 237, 0.6);
+  //   background: #000;
+  width: 100%;
+  position: fixed;
+  z-index: 10;
+  padding: 10px;
+  .subtitle {
+    font-size: 20px;
+    text-transform: uppercase;
+    text-align: center;
+    position: relative;
+  }
+  .subtitle-2 {
+    display: none;
+    #play {
+      display: inline-block;
+      position: relative;
+
+      svg {
+        position: absolute;
+        transform: scale(1.3) translateY(4px);
+      }
+    }
+  }
+}
