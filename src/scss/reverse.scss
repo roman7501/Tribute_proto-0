@@ -1,14 +1,18 @@
 .reverse {
   padding-bottom: 100vh;
+  // border: 1px solid red;
+  position: relative;
   .god {
-    color: #2070f0;
-    font-size: 120px;
-    margin-top: 800vh;
+    color: #fff;
+    font-size: 180px;
     transform: translateX(100vw);
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 
   .catch {
-    margin-top: 50vh;
+    margin-top: 400vh;
     margin-bottom: 150vh;
     font-size: 180px;
     color: #fff;

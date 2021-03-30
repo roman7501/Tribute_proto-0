@@ -15,21 +15,21 @@ export default class ProgressBar {
   }
 
   anim() {
-    gsap.fromTo(
-      ".progress-bar__wrapper",
-      {
-        scaleX: 0,
-      },
-      {
-        scrollTrigger: {
-          scroller: "[data-scroll-container]",
-          trigger: ".lines",
-          start: "top+=100 top",
-        },
-        scaleX: 1,
-        delay: 1.5,
-        duration: 0.5,
-      }
-    );
+    // gsap.fromTo(
+    //   ".progress-bar__wrapper",
+    //   {
+    //     scaleX: 0,
+    //   },
+    //   {
+    //     scrollTrigger: {
+    //       scroller: "[data-scroll-container]",
+    //       trigger: ".lines",
+    //       start: "top+=100 top",
+    //     },
+    //     scaleX: 1,
+    //     delay: 1.5,
+    //     duration: 0.5,
+    //   }
+    // );
   }
 }

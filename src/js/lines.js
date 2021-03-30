@@ -12,23 +12,26 @@ export default class Lines {
   }
 
   anim() {
-    // this.animText();
+    this.animText();
     this.animMoon();
-    this.animLines();
+    // this.animLines();
   }
 
   animText() {
     this.textEls.forEach((text) => {
-      gsap.from(text, {
+      let splitText = new SplitText(text, { type: "words,chars" });
+
+      gsap.from(splitText.chars, {
         scrollTrigger: {
           scroller: "[data-scroll-container]",
           trigger: text,
-          start: "top bottom-=200",
+          start: "top bottom",
         },
-        scale: 0.9,
-        opacity: 0,
+        y: 20,
+        stagger: 0.05,
         duration: 6,
-        ease: "linear",
+        yoyo: true,
+        ease: "elastic",
       });
     });
   }
@@ -37,7 +40,7 @@ export default class Lines {
     gsap.from("#moon-container", {
       scrollTrigger: {
         scroller: "[data-scroll-container]",
-        trigger: "#text-2",
+        trigger: "#text-3",
         start: "top bottom-=50",
       },
       opacity: 0,

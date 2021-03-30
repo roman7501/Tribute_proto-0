@@ -1,8 +1,10 @@
 .lines {
   width: 100%;
   padding-top: 200vh;
+  padding-bottom: 200vh;
   position: relative;
   margin-bottom: 100vh;
+  // border: 1px solid blue;
   .moon__container {
     img {
       margin-left: 80vw;
@@ -10,7 +12,9 @@
       opacity: 1;
     }
   }
-
+  .rain {
+    display: none;
+  }
   .rain-1 {
     position: absolute;
     top: 180vh;
@@ -30,19 +34,18 @@
   .text-big {
     font-size: 40px;
     opacity: 0.8;
+    font-size: 80px;
   }
 
   .text-1 {
     margin-top: 0vh;
-    text-align: center;
-
+    // text-align: center;
     span {
       margin-left: 55px;
     }
   }
   .text-2 {
     margin-top: 120vh;
-    margin-left: 5vw;
     opacity: 0.7;
     span {
       margin-left: 205px;
@@ -51,7 +54,6 @@
 
   .text-3 {
     margin-top: 160vh;
-    text-align: center;
 
     span {
       margin-left: 205px;
@@ -60,12 +62,10 @@
 
   .text-4 {
     margin-top: 90vh;
-    margin-left: 2vw;
   }
 
   .text-5 {
-    margin-top: 35vh;
-    margin-left: 10vw;
+    margin-top: 95vh;
   }
   .rain {
     line {

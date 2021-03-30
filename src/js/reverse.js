@@ -11,68 +11,91 @@ export default class Reverse {
   anim() {
     this.animGod();
     this.animCatch();
-    this.animGodReversed();
+    // this.animGodReversed();
     this.animTransition();
   }
 
   animGod() {
-    this.tlGod = gsap.timeline({
-      scrollTrigger: {
-        scroller: "[data-scroll-container]",
-        trigger: ".god",
-        start: "center center",
-        endTrigger: ".reverse",
-        end: "bottom top",
-        pin: true,
-        scrub: true,
-      },
+    // Snap position .god
+    ScrollTrigger.create({
+      scroller: "[data-scroll-container]",
+      trigger: ".god",
+      start: "center center",
+      endTrigger: ".reverse",
+      end: "bottom bottom",
+      scrub: true,
+      pin: true,
+      ease: "linear",
     });
 
     this.tlMoon = gsap.timeline({
       scrollTrigger: {
         scroller: "[data-scroll-container]",
-        trigger: ".god",
-        start: "center center",
-        endTrigger: ".reverse",
-        end: "bottom top",
+        trigger: ".reverse",
+        start: "top bottom",
+        endTrigger: ".catch",
+        end: "top center",
         scrub: true,
       },
+      ease: "linear",
     });
 
     // God appears from right
-    this.tlGod.to(".god", {
-      x: 50,
+    gsap.to(".god", {
+      scrollTrigger: {
+        scroller: "[data-scroll-container]",
+        trigger: ".god",
+        start: "center center",
+        endTrigger: ".catch",
+        end: "top bottom+=200",
+        scrub: true,
+      },
+      x: 0,
+      ease: "linear",
     });
 
-    // ... and blue point shifts on right
-    this.tlMoon.to("#moon-map__container", {
-      x: -300,
+    // Small lines leave
+    this.tlMoon.to("#small-line-1", {
+      opacity: 0.4,
+      x: "100vw",
     });
 
     this.tlMoon.to(
-      "#middle-line-4",
+      "#small-line-2",
       {
         opacity: 0.4,
-        x: "100vw",
+        x: "-100vw",
       },
       "<"
     );
+
+    // Triangle get bigger
     this.tlMoon.to(
-      "#small-circle",
+      "#triangle-down",
       {
-        y: -100,
+        opacity: 0.4,
+        scale: 4,
+      },
+      "<"
+    );
+
+    // New line appear in the middle
+    this.tlMoon.fromTo(
+      "#big-line-3",
+      {
+        drawSVG: "0%",
+        scale: 1,
+      },
+      {
+        drawSVG: "50%",
+        opacity: 1,
+        scale: 6,
       },
       "<"
     );
   }
 
   animCatch() {
-    this.lines1 = "#middle-line-1, #middle-line-3, #middle-line-5, #middle-line-7, #middle-line-9, #middle-line-11";
-    this.lines2 = "#middle-line-2, #middle-line-4, #middle-line-6, #middle-line-8, #middle-line-10, #middle-line-12";
-    this.lines3 = "#big-line-1";
-    this.lines4 = "#big-line-2";
-    this.lines5 = "#big-line-3";
-
     this.tlCatch = gsap.timeline({
       scrollTrigger: {
         scroller: "[data-scroll-container]",
@@ -84,78 +107,115 @@ export default class Reverse {
       },
     });
 
-    this.tlCatch.to(".catch", {
-      rotate: 180,
+    // New line gets down
+    this.tlCatch.to("#big-line-3", {
+      y: "400",
     });
 
+    // God fade out
     this.tlCatch.to(
-      "#triangle-down, #triangle-up",
+      ".god",
+
       {
-        rotate: 180,
+        opacity: 0.1,
       },
       "<"
     );
 
-    this.tlCatch.to(
-      this.lines1,
-      {
-        // transformOrigin: "left",
-        scale: 0.5,
-        rotate: -180,
+    // Snap catch
+    ScrollTrigger.create({
+      scroller: "[data-scroll-container]",
+      trigger: ".catch",
+      start: "center center",
+      endTrigger: ".reverse",
+      end: "bottom bottom",
+      scrub: true,
+      pin: true,
+      ease: "linear",
+    });
+
+    this.tlCatchReverse = gsap.timeline({
+      scrollTrigger: {
+        scroller: "[data-scroll-container]",
+        trigger: ".catch",
+        start: "center center-=10",
+        endTrigger: ".reverse",
+        end: "bottom bottom",
+        scrub: true,
       },
-      "<"
-    );
-    this.tlCatch.to(
-      this.lines2,
+    });
+
+    // New line appear in the middle
+    this.tlCatchReverse.fromTo(
+      "#triangle-up",
       {
-        // transformOrigin: "left",
-        scale: 0.5,
-        rotate: 180,
+        drawSVG: "0%",
+        scale: 1,
+        opacity: 1,
       },
-      "<"
+      {
+        drawSVG: "100%",
+        opacity: 1,
+        scale: 3,
+        rotate: -400,
+      }
     );
 
-    this.tlCatch.to(
-      this.lines3,
+    this.tlCatchReverse.to(
+      "#triangle-down",
       {
-        // transformOrigin: "left",
-        stroke: "#1655BA",
-        scale: 6,
-        rotate: 250,
-        opacity: 0.4,
+        x: -400,
+        rotate: 200,
       },
       "<"
     );
+    this.tlCatchReverse.to(
+      ".catch",
+      {
+        transformOrigin: "center",
+        rotate: 200,
+      },
+      "<"
+    );
+    this.tlCatchReverse.to(
+      "#big-line-3",
+      {
+        x: -400,
+        rotate: 200,
+      },
+      "<"
+    );
+    this.tlCatchReverse.to(".catch", {
+      x: -2000,
+      rotate: 200,
+    });
 
-    this.tlCatch.to(
-      this.lines4,
+    this.tlCatchReverse.to(
+      "#moon-map__container",
       {
-        // transformOrigin: "left",
-        stroke: "#1655BA",
-        scale: 6,
-        rotate: 130,
-        opacity: 0.4,
+        transformOrigin: "center",
+        scale: 0.7,
+        rotate: 100,
       },
       "<"
     );
-    this.tlCatch.to(
-      this.lines5,
+    this.tlCatchReverse.fromTo(
+      "#big-circle",
       {
-        // transformOrigin: "left",
-        stroke: "#1655BA",
-        x: 50,
-        scale: 2,
-        rotate: 190,
-        opacity: 0.4,
+        drawSVG: "50%",
+      },
+      {
+        drawSVG: "100%",
+        opacity: 1,
+        x: 400,
+        scale: 4,
       },
       "<"
     );
-
-    this.tlCatch.to(
-      "#small-circle",
+    this.tlCatchReverse.to(
+      "#triangle-up",
       {
-        y: 200,
-        scale: 0.1,
+        opacity: 0.2,
       },
       "<"
     );

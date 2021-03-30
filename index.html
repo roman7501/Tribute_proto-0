@@ -37,11 +37,11 @@
   <body>
     <!-- PROGRESS BAR -->
     <section class="progress-bar__wrapper">
-      <div class="progress-bar--base">
+      <!-- <div class="progress-bar--base"> -->
         <div class="progress-bar"></div>
-        <div class="progress-bar--segment" id="segment-1"></div>
+        <!-- <div class="progress-bar--segment" id="segment-1"></div>
         <div class="progress-bar--segment" id="segment-2"></div>
-        <div class="progress-bar--segment" id="segment-3"></div>
+        <div class="progress-bar--segment" id="segment-3"></div> -->
       </div>
     </section>
 
@@ -63,63 +63,19 @@
       <section class="lines">
         <div class="lines__container">
           <p class="text text-beau text-big text-1" id="text-1">could you possibly help me understand ?</p>
-          <div class="rain-1 rain">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="1205.022" viewBox="0 0 28 1205.022">
-              <line
-                id="rain-1"
-                data-name="Ligne 27"
-                x2="27"
-                y2="1205"
-                transform="translate(0.5 0.011)"
-                fill="none"
-                stroke="#707070"
-                stroke-width="1"
-              />
-            </svg>
-          </div>
 
           <p class="text text-beau text-big text-2" id="text-2">would you even hold my hand ?</p>
-
-          <div class="moon__container" id="moon-container">
-            <img src="./assets/img/moon.svg" alt="moon" id="moon" />
-          </div>
 
           <p class="text text-beau text-big text-3" id="text-3">
             would you even hold my hand speaking softly in my hear ?
           </p>
-          <div class="rain-2 rain">
-            <svg xmlns="http://www.w3.org/2000/svg" width="335.973" height="1401.232" viewBox="0 0 335.973 1401.232">
-              <line
-                id="rain-2"
-                data-name="Ligne 28"
-                x2="335"
-                y2="1401"
-                transform="translate(0.486 0.116)"
-                fill="none"
-                stroke="#707070"
-                stroke-width="1"
-              />
-            </svg>
-          </div>
 
+          <div class="moon__container" id="moon-container">
+            <img src="./assets/img/moon.svg" alt="moon" id="moon" />
+          </div>
           <p class="text text-beau text-big text-4" id="text-4">could you possibly help me ?</p>
 
           <p class="text text-beau text-big text-5" id="text-5">please</p>
-
-          <div class="rain-3 rain">
-            <svg xmlns="http://www.w3.org/2000/svg" width="1246.569" height="861.822" viewBox="0 0 1246.569 861.822">
-              <line
-                id="rain-3"
-                data-name="Ligne 30"
-                y1="861"
-                x2="1246"
-                transform="translate(0.284 0.411)"
-                fill="none"
-                stroke="#707070"
-                stroke-width="1"
-              />
-            </svg>
-          </div>
         </div>
       </section>
 
@@ -132,11 +88,7 @@
         </p>
         <p class="text-beau catch">Catch me in the moment when you said you love me.</p>
         <p class="crying text">Someone is crying</p>
-        <p class="text-beau god-reversed">
-          Oh, life is like a grain of salt in
-          <br />
-          the eyes of God,
-        </p>
+
         <p class="text-beau catch-reverse">Catch me in the moment when you said you love me.</p>
       </section>
 
@@ -275,7 +227,8 @@
               opacity: 0.8;
             }
             .cls-2 {
-              fill: #b69253;
+              fill: none;
+              stroke: #b69253;
             }
             .cls-2,
             .cls-3,
@@ -340,7 +293,7 @@
           </style>
         </defs>
         <g id="moon-map__container" data-name="Layer 2">
-          <circle id="big-circle" class="cls-1" cx="261.0944" cy="270.5" r="189" />
+          <circle id="big-circle" class="cls-1 circle" cx="261.0944" cy="270.5" r="189" />
           <g id="moon-path__wrapper" data-name="Layer 3">
             <circle id="moon-1" class="cls-2 moon-path" cx="263.5035" cy="31.0909" r="31.0909" />
             <path
@@ -390,10 +343,10 @@
             class="cls-10 polygon"
             points="337.594 316.051 259.594 361.735 181.594 316.051 181.594 224.684 259.594 179 337.594 224.684 337.594 316.051"
           />
-          <polygon id="triangle-up" class="triangle cls-11" points="260.352 87 103.974 362 416.731 362 260.352 87" />
+          <polygon id="triangle-up" class="cls-11 triangle" points="260.352 87 103.974 362 416.731 362 260.352 87" />
           <polygon
             id="triangle-down"
-            class="triangle cls-11"
+            class="cls-11 triangle"
             points="259.663 454 417.731 179 101.594 179 259.663 454"
           />
           <line id="big-line-1" class="cls-12 big-line" x1="101.5944" y1="179" x2="416.5944" y2="362" />
@@ -413,7 +366,7 @@
           <line id="middle-line-10" class="cls-12 middle-line" x1="337.5944" y1="316" x2="260.5944" y2="87" />
           <line id="middle-line-11" class="cls-12 middle-line" x1="260.5944" y1="454" x2="181.5944" y2="225" />
           <line id="middle-line-12" class="cls-12 middle-line" x1="337.5944" y1="225" x2="260.5944" y2="454" />
-          <circle id="small-circle" class="cls-12" cx="260.0944" cy="270.5" r="45.5" />
+          <circle id="small-circle" class="cls-12 circle" cx="260.0944" cy="270.5" r="45.5" />
         </g>
       </svg>
     </div>
