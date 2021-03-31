@@ -7,11 +7,22 @@
   transform-origin: center;
   opacity: 1;
   position: fixed;
-  // pointer-events: all;
   svg {
     height: 100vh;
   }
   .moon-path {
     transition: transform 0.3s ease;
+  }
+}
+.moon__container {
+  z-index: -1;
+  opacity: 0;
+  position: absolute;
+  top: -300%;
+  left: -150%;
+  transform: rotate(50deg);
+  pointer-events: none;
+  svg {
+    height: 400vh;
   }
 }

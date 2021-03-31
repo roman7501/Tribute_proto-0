@@ -11,8 +11,6 @@ export default class Reverse {
   anim() {
     this.animGod();
     this.animCatch();
-    // this.animGodReversed();
-    this.animTransition();
   }
 
   animGod() {
@@ -145,7 +143,11 @@ export default class Reverse {
       },
     });
 
-    // New line appear in the middle
+    /*------------------------------
+      ROTATION
+    ------------------------------*/
+
+    // new triangle draw + rotate
     this.tlCatchReverse.fromTo(
       "#triangle-up",
       {
@@ -161,6 +163,7 @@ export default class Reverse {
       }
     );
 
+    // prev triangle rotate + offset
     this.tlCatchReverse.to(
       "#triangle-down",
       {
@@ -169,6 +172,8 @@ export default class Reverse {
       },
       "<"
     );
+
+    // Catch rotate
     this.tlCatchReverse.to(
       ".catch",
       {
@@ -177,6 +182,8 @@ export default class Reverse {
       },
       "<"
     );
+
+    // Line rotate
     this.tlCatchReverse.to(
       "#big-line-3",
       {
@@ -185,20 +192,22 @@ export default class Reverse {
       },
       "<"
     );
-    this.tlCatchReverse.to(".catch", {
-      x: -2000,
-      rotate: 200,
+
+    /*------------------------------
+      ROTATION II
+    ------------------------------*/
+
+    this.tlCatchReverse.to("#moon-map__container", {
+      transformOrigin: "center",
+      scale: 0.7,
+      rotate: 100,
     });
 
-    this.tlCatchReverse.to(
-      "#moon-map__container",
-      {
-        transformOrigin: "center",
-        scale: 0.7,
-        rotate: 100,
-      },
-      "<"
-    );
+    /*------------------------------
+      NEW CIRCLE
+    ------------------------------*/
+
+    // drawing circle
     this.tlCatchReverse.fromTo(
       "#big-circle",
       {
@@ -212,6 +221,8 @@ export default class Reverse {
       },
       "<"
     );
+
+    // Fade out new triangle
     this.tlCatchReverse.to(
       "#triangle-up",
       {
@@ -219,43 +230,51 @@ export default class Reverse {
       },
       "<"
     );
-  }
 
-  animGodReversed() {
-    this.tlGodReversed = gsap.timeline({
-      scrollTrigger: {
-        scroller: "[data-scroll-container]",
-        trigger: ".god-reversed",
-        start: "top bottom",
-        endTrigger: ".reverse",
-        end: "bottom bottom",
-        scrub: true,
-      },
-    });
-
-    this.tlGodReversed.to(".god-reversed", {
-      rotate: 180,
-    });
-
-    this.tlGodReversed.to(
-      "#small-circle",
+    // Fade in "How i fell"
+    this.tlCatchReverse.to(
+      ".fell",
       {
-        scale: 0,
+        opacity: 1,
       },
       "<"
     );
-  }
 
-  animTransition() {
-    gsap.to(".moon-map__container", {
+    // Rotate the moon map
+    this.tlCatchReverse.to(
+      ".moon__container",
+      {
+        transformOrigin: "center",
+        opacity: 1,
+        rotate: 100,
+      },
+      "<"
+    );
+
+    /*------------------------------
+      ROTATE THE MOONS + THE MOON MAP
+    ------------------------------*/
+    this.tlParticules = gsap.timeline({
       scrollTrigger: {
         scroller: "[data-scroll-container]",
         trigger: ".particules",
         start: "top bottom",
-        end: "top top-=3000",
+        endTrigger: ".sea",
+        end: "bottom bottom",
         scrub: true,
+        ease: "linear",
       },
-      y: "-180vh",
     });
+
+    this.tlParticules.to(".moon__container", {
+      rotate: 360,
+    });
+    this.tlParticules.to(
+      "#moon-map__container",
+      {
+        rotate: 360,
+      },
+      "<"
+    );
   }
 }

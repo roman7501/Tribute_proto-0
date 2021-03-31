@@ -17,17 +17,9 @@ export default class Particules {
       container: this.particulesContainer, // the dom element that will contain the animation
       renderer: "svg",
       loop: true,
-      autoplay: true,
+      autoplay: false,
       animationData: data,
     });
-
-    // lottie.loadAnimation({
-    //   container: this.sunMapContainer, // the dom element that will contain the animation
-    //   renderer: "svg",
-    //   loop: true,
-    //   autoplay: false,
-    //   animationData: data2,
-    // });
   }
 
   anim() {
@@ -52,7 +44,6 @@ export default class Particules {
             trigger: ".particules",
             start: "top top",
           },
-          // transformOrigin: "center center",
           x: "-100%",
           repeat: -1,
           duration: 15,

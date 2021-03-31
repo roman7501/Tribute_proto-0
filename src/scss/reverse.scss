@@ -1,10 +1,9 @@
 .reverse {
   padding-bottom: 100vh;
-  // border: 1px solid red;
   position: relative;
   .god {
     color: #fff;
-    font-size: 180px;
+    font-size: 150px;
     transform: translateX(100vw);
     position: absolute;
     top: 0;
@@ -14,14 +13,14 @@
   .catch {
     margin-top: 400vh;
     margin-bottom: 150vh;
-    font-size: 180px;
+    font-size: 150px;
     color: #fff;
   }
-  .crying {
-    margin-right: 40vw;
-    transform: rotate(180deg);
+  .fell {
+    margin-left: 20vw;
+    font-size: 100px;
     margin-bottom: 10vh;
-    opacity: 0.2;
+    opacity: 0.5;
   }
   .god-reversed {
     color: #2070f0;

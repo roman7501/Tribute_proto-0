@@ -4,15 +4,28 @@
   .particules__container {
     top: 10px;
     width: 100%;
-    // display: none;
   }
-  // .sun-map__container {
-  //   // position: absolute;
-  //   // margin-top: -850vh;
-  //   width: 80vw;
-  // }
   svg {
     height: auto !important;
+  }
+  .text-beau {
+    position: absolute;
+    color: $pink;
+  }
+  .coming {
+    top: 0;
+    left: 30%;
+  }
+  .place {
+    font-size: 200px;
+    top: 130vh;
+    left: 10%;
+  }
+  .lips {
+    font-size: 400px;
+    position: absolute;
+    top: 250vh;
+    left: 30%;
   }
   .kiss__container {
     position: absolute;

@@ -13,82 +13,134 @@ export default class Lines {
 
   anim() {
     this.animText();
-    this.animMoon();
-    // this.animLines();
   }
 
   animText() {
-    this.textEls.forEach((text) => {
-      let splitText = new SplitText(text, { type: "words,chars" });
-
-      gsap.from(splitText.chars, {
-        scrollTrigger: {
-          scroller: "[data-scroll-container]",
-          trigger: text,
-          start: "top bottom",
-        },
-        y: 20,
-        stagger: 0.05,
-        duration: 6,
-        yoyo: true,
-        ease: "elastic",
-      });
-    });
-  }
-
-  animMoon() {
-    gsap.from("#moon-container", {
+    const tl = gsap.timeline({
       scrollTrigger: {
         scroller: "[data-scroll-container]",
-        trigger: "#text-3",
-        start: "top bottom-=50",
-      },
-      opacity: 0,
-      y: 700,
-      duration: 6,
-      ease: "linear",
-    });
-  }
-
-  animLines() {
-    gsap.from("#rain-1", {
-      scrollTrigger: {
-        scroller: "[data-scroll-container]",
-        trigger: "#intro-1",
+        trigger: ".lines",
         start: "top top",
-        endTrigger: "#text-3",
-        end: "top top",
+        endTrigger: ".lines",
+        end: "bottom bottom",
         scrub: true,
+        ease: "linear",
       },
-      drawSVG: 0,
-      opacity: 0,
-      ease: "linear",
     });
-    gsap.from("#rain-2", {
-      scrollTrigger: {
-        scroller: "[data-scroll-container]",
-        trigger: "#text-1",
-        start: "top top",
-        endTrigger: "#text-4",
-        end: "top top",
-        scrub: true,
-      },
-      drawSVG: 0,
-      opacity: 0,
-      ease: "linear",
+
+    let i = 1;
+    let offset = 120;
+    let opacityPrev = 0.5;
+    let opacityCurrent = 1;
+
+    /*------------------------------
+      TEXT ACCORDION
+    ------------------------------*/
+
+    tl.to(".lines__container", {
+      opacity: 1,
     });
-    gsap.from("#rain-3", {
-      scrollTrigger: {
-        scroller: "[data-scroll-container]",
-        trigger: "#text-3",
-        start: "top top",
-        endTrigger: "#text-5",
-        end: "top top",
-        scrub: true,
+    tl.to("#text-1", {
+      opacity: opacityCurrent,
+    });
+    tl.to(
+      "#text-2, #text-3, #text-4, #text-5, #text-6",
+      {
+        y: i * offset,
+        onComplete: i++,
       },
-      drawSVG: 0,
-      transformOrigin: "center center",
-      ease: "linear",
+      "<"
+    );
+
+    tl.to("#text-2", {
+      opacity: opacityCurrent,
+    });
+    tl.to(
+      "#text-1",
+      {
+        opacity: opacityPrev,
+      },
+      "<"
+    );
+    tl.to(
+      " #text-3, #text-4, #text-5, #text-6",
+      {
+        y: i * offset,
+        onComplete: i++,
+      },
+      "<"
+    );
+
+    tl.to("#text-3", {
+      opacity: opacityCurrent,
+    });
+    tl.to(
+      "#text-2",
+      {
+        opacity: opacityPrev,
+      },
+      "<"
+    );
+    tl.to(
+      " #text-4, #text-5, #text-6",
+      {
+        y: i * offset,
+        onComplete: i++,
+      },
+      "<"
+    );
+
+    tl.to("#text-4", {
+      opacity: opacityCurrent,
+    });
+    tl.to(
+      "#text-3",
+      {
+        opacity: opacityPrev,
+      },
+      "<"
+    );
+    tl.to(
+      "#text-5, #text-6",
+      {
+        y: i * offset,
+        onComplete: i++,
+      },
+      "<"
+    );
+
+    tl.to("#text-5", {
+      opacity: opacityCurrent,
+    });
+    tl.to(
+      "#text-4",
+      {
+        opacity: opacityPrev,
+      },
+      "<"
+    );
+    tl.to(
+      "#text-6",
+      {
+        y: i * offset,
+        onComplete: i++,
+      },
+      "<"
+    );
+
+    tl.to("#text-6", {
+      opacity: opacityCurrent,
+    });
+    tl.to(
+      "#text-5",
+      {
+        opacity: opacityPrev,
+      },
+      "<"
+    );
+
+    tl.to(".lines__container", {
+      opacity: 0.1,
     });
   }
 }
