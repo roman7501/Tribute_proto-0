@@ -29,8 +29,8 @@ export default class Lines {
     });
 
     let i = 1;
-    let offset = 120;
-    let opacityPrev = 0.5;
+    let offset = 0;
+    let opacityPrev = 0.25;
     let opacityCurrent = 1;
 
     /*------------------------------
@@ -40,21 +40,27 @@ export default class Lines {
     tl.to(".lines__container", {
       opacity: 1,
     });
-    tl.to("#text-1", {
-      opacity: opacityCurrent,
+    tl.from("#text-1", {
+      y: offset,
     });
     tl.to(
-      "#text-2, #text-3, #text-4, #text-5, #text-6",
+      "#text-1",
       {
-        y: i * offset,
-        onComplete: i++,
+        opacity: opacityCurrent,
       },
       "<"
     );
 
-    tl.to("#text-2", {
-      opacity: opacityCurrent,
+    tl.from("#text-2", {
+      y: offset,
     });
+    tl.to(
+      "#text-2",
+      {
+        opacity: opacityCurrent,
+      },
+      "<"
+    );
     tl.to(
       "#text-1",
       {
@@ -62,18 +68,17 @@ export default class Lines {
       },
       "<"
     );
+
+    tl.from("#text-3", {
+      y: offset,
+    });
     tl.to(
-      " #text-3, #text-4, #text-5, #text-6",
+      "#text-3",
       {
-        y: i * offset,
-        onComplete: i++,
+        opacity: opacityCurrent,
       },
       "<"
     );
-
-    tl.to("#text-3", {
-      opacity: opacityCurrent,
-    });
     tl.to(
       "#text-2",
       {
@@ -81,18 +86,17 @@ export default class Lines {
       },
       "<"
     );
+
+    tl.from("#text-4", {
+      y: offset,
+    });
     tl.to(
-      " #text-4, #text-5, #text-6",
+      "#text-4",
       {
-        y: i * offset,
-        onComplete: i++,
+        opacity: opacityCurrent,
       },
       "<"
     );
-
-    tl.to("#text-4", {
-      opacity: opacityCurrent,
-    });
     tl.to(
       "#text-3",
       {
@@ -100,18 +104,17 @@ export default class Lines {
       },
       "<"
     );
+
+    tl.from("#text-5", {
+      y: offset,
+    });
     tl.to(
-      "#text-5, #text-6",
+      "#text-5",
       {
-        y: i * offset,
-        onComplete: i++,
+        opacity: opacityCurrent,
       },
       "<"
     );
-
-    tl.to("#text-5", {
-      opacity: opacityCurrent,
-    });
     tl.to(
       "#text-4",
       {
@@ -119,18 +122,17 @@ export default class Lines {
       },
       "<"
     );
+
+    tl.from("#text-6", {
+      y: offset,
+    });
     tl.to(
       "#text-6",
       {
-        y: i * offset,
-        onComplete: i++,
+        opacity: opacityCurrent,
       },
       "<"
     );
-
-    tl.to("#text-6", {
-      opacity: opacityCurrent,
-    });
     tl.to(
       "#text-5",
       {
@@ -140,7 +142,7 @@ export default class Lines {
     );
 
     tl.to(".lines__container", {
-      opacity: 0.1,
+      opacity: 0.2,
     });
   }
 }

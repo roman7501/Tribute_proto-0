@@ -1,21 +1,58 @@
 .lines {
   width: 100%;
   padding-top: 200vh;
-  padding-bottom: 500vh;
+  padding-bottom: 1000vh;
   margin-bottom: 100vh;
   // border: 1px solid blue;
 }
 
 .lines__container {
-  opacity: 0;
+  opacity: 01;
   position: relative;
   top: 50px;
-  left: 20px;
+  left: 40px;
 
   .text-big {
     position: absolute;
 
-    opacity: 0.05;
-    font-size: 80px;
+    opacity: 0.04;
+    font-size: 7vw;
+    line-height: 8vw;
+  }
+
+  #text-1 {
+    margin-top: 9vw;
+    margin-left: 2vw;
+  }
+
+  #text-2 {
+    margin-top: 9vw;
+    margin-left: 12vw;
+  }
+
+  #text-3 {
+    margin-top: 1vw;
+    margin-left: 12vw;
+    span {
+      margin-left: 35vw;
+    }
+  }
+  #text-4 {
+    margin-top: 1vw;
+    margin-left: 12vw;
+    span {
+      margin-left: 35vw;
+    }
+  }
+  #text-5 {
+    margin-top: 1vw;
+    margin-left: 46vw;
+    span {
+      margin-left: 10vw;
+    }
+  }
+  #text-6 {
+    margin-top: 40vw;
+    margin-left: 10vw;
   }
 }

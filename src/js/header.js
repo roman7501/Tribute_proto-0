@@ -30,7 +30,7 @@ export default class Header {
     ScrollTrigger.create({
       scroller: "[data-scroll-container]",
       trigger: ".title",
-      start: "top top+=50%",
+      start: "top top+=320vh",
       endTrigger: ".lines",
       end: "top bottom-=300",
       scrub: true,
@@ -54,6 +54,14 @@ export default class Header {
       opacity: 0,
       x: -100,
     });
+    tl.to(
+      ".title .top-line",
+      {
+        opacity: 0,
+        x: -200,
+      },
+      "<"
+    );
 
     tl.to(
       ".title .title-top",

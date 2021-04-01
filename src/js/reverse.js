@@ -2,10 +2,11 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
 import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
+import { SplitText } from "gsap/SplitText";
 
 export default class Reverse {
   constructor() {
-    gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin, MorphSVGPlugin);
+    gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin, MorphSVGPlugin, SplitText);
   }
 
   anim() {
@@ -197,11 +198,11 @@ export default class Reverse {
       ROTATION II
     ------------------------------*/
 
-    this.tlCatchReverse.to("#moon-map__container", {
-      transformOrigin: "center",
-      scale: 0.7,
-      rotate: 100,
-    });
+    // this.tlCatchReverse.to("#moon-map__container", {
+    //   transformOrigin: "center",
+    //   scale: 0.7,
+    //   rotate: 100,
+    // });
 
     /*------------------------------
       NEW CIRCLE
@@ -223,13 +224,13 @@ export default class Reverse {
     );
 
     // Fade out new triangle
-    this.tlCatchReverse.to(
-      "#triangle-up",
-      {
-        opacity: 0.2,
-      },
-      "<"
-    );
+    // this.tlCatchReverse.to(
+    //   "#triangle-up",
+    //   {
+    //     opacity: 0.2,
+    //   },
+    //   "<"
+    // );
 
     // Fade in "How i fell"
     this.tlCatchReverse.to(
@@ -241,20 +242,20 @@ export default class Reverse {
     );
 
     // Rotate the moon map
-    this.tlCatchReverse.to(
-      ".moon__container",
-      {
-        transformOrigin: "center",
-        opacity: 1,
-        rotate: 100,
-      },
-      "<"
-    );
+    // this.tlCatchReverse.to(
+    //   ".moon__container",
+    //   {
+    //     transformOrigin: "center",
+    //     opacity: 1,
+    //     rotate: 100,
+    //   },
+    //   "<"
+    // );
 
     /*------------------------------
       ROTATE THE MOONS + THE MOON MAP
     ------------------------------*/
-    this.tlParticules = gsap.timeline({
+    this.tlParticules1 = gsap.timeline({
       scrollTrigger: {
         scroller: "[data-scroll-container]",
         trigger: ".particules",
@@ -266,13 +267,106 @@ export default class Reverse {
       },
     });
 
-    this.tlParticules.to(".moon__container", {
-      rotate: 360,
+    this.tlParticules1.to("#big-line-3, #big-circle, #triangle-up, #triangle-down", {
+      stroke: "#fc00bd",
+      duration: 0.1,
     });
-    this.tlParticules.to(
-      "#moon-map__container",
+    this.tlParticules1.to(
+      ".lines__container",
       {
-        rotate: 360,
+        autoAlpha: 0,
+      },
+      "<"
+    );
+    this.tlParticules1.to("#big-line-3, #big-circle, #triangle-up, #triangle-down", {
+      rotate: 18,
+      duration: 2,
+    }),
+      "<";
+
+    /*------------------------------
+      ANIM ACROSS SEA
+    ------------------------------*/
+    this.tlSea = gsap.timeline({
+      scrollTrigger: {
+        scroller: "[data-scroll-container]",
+        trigger: ".sea",
+        start: "top bottom",
+        endTrigger: ".voice",
+        end: "top top",
+        scrub: true,
+        ease: "linear",
+      },
+    });
+
+    const mySplitText = new SplitText(".text-sea", { type: "words" });
+
+    this.tlSea.fromTo(
+      mySplitText.words,
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 0.6,
+        stagger: 1,
+        duration: 3,
+      }
+    );
+
+    /*------------------------------
+      REVEAL MOON MAP
+    ------------------------------*/
+
+    this.tlVoice = gsap.timeline({
+      scrollTrigger: {
+        scroller: "[data-scroll-container]",
+        trigger: ".voice",
+        start: "top bottom",
+        endTrigger: ".voice",
+        end: "bottom top",
+        scrub: true,
+        ease: "linear",
+      },
+    });
+
+    this.tlVoice.to("#triangle-down, #triangle-up, #big-circle, #big-line-3, #big-line-1, .small-line", {
+      scale: 1,
+      x: 0,
+      y: 0,
+      rotate: 0,
+      stroke: "#2070f0",
+      opacity: 1,
+    });
+
+    // this.tlVoice.fromTo(
+    //   ".middle-line",
+    //   {
+    //     drawSVG: "0%",
+    //     opacity: 0.5,
+    //     stroke: "#2070f0",
+    //   },
+    //   {
+    //     drawSVG: "100%",
+    //     opacity: 0.5,
+    //     stroke: "#2070f0",
+    //   },
+    //   "<"
+    // );
+    this.tlVoice.fromTo(
+      ".moon-path",
+      {
+        opacity: 0,
+      },
+      {
+        opacity: 1,
+      },
+      "<"
+    );
+    this.tlVoice.to(
+      ".text-sea",
+      {
+        opacity: 0.1,
+        color: "#2070f0",
       },
       "<"
     );

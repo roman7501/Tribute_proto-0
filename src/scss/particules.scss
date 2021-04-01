@@ -1,71 +1,37 @@
 .particules {
   position: relative;
   width: 100%;
-  .particules__container {
-    top: 10px;
-    width: 100%;
-  }
+
   svg {
     height: auto !important;
   }
   .text-beau {
-    position: absolute;
     color: $pink;
   }
   .coming {
-    top: 0;
-    left: 30%;
+    color: $pink;
+    font-size: 10vw;
   }
   .place {
-    font-size: 200px;
-    top: 130vh;
-    left: 10%;
+    margin-top: 70vh;
+    color: $pink;
+
+    font-size: 10vw;
   }
   .lips {
-    font-size: 400px;
-    position: absolute;
-    top: 250vh;
-    left: 30%;
+    color: $pink;
+    font-size: 6vw;
+    margin-top: 70vh;
+    margin-left: 50vw;
   }
-  .kiss__container {
-    position: absolute;
-    top: 640vh;
-    height: auto;
-    .kiss {
-      color: #fc00bd;
-      font-size: 180px;
-      white-space: nowrap;
-      overflow: hidden;
-      transform-origin: left;
-      .kiss-overflow {
-        width: 1000vw;
-        font-size: 0px;
-        .kiss-text {
-          font-size: 180px;
-          display: inline-block;
-          transform: translateX(0);
-        }
-      }
-      span {
-        margin-right: 300px;
-      }
-    }
-    #kiss-1 {
-      margin-top: 0;
-      transform: rotate(-2deg);
-    }
-    #kiss-2 {
-      margin-top: -50px;
-      transform: rotate(2deg) translateX(-200px);
-    }
-    #kiss-3 {
-      margin-top: 0px;
-      top: 425vh;
-    }
-    #kiss-4 {
-      margin-top: -100px;
-      opacity: 0.2;
-      transform: rotate(-4deg) translateX(-100px);
-    }
+  .kiss {
+    margin-top: 70vh;
+    color: $pink;
+    font-size: 180px;
+  }
+
+  #kiss-1 {
+    margin-top: 0;
+    transform: rotate(-2deg);
   }
 }

@@ -1,30 +1,8 @@
 .sea {
   width: 100%;
-  .kill-wrapper {
-    margin-left: 150px;
-    background-image: url("/assets/img/sea-bg.svg");
-    background-size: 100vw;
-    background-repeat: repeat-x;
-    background-position-x: 0;
-    background-position-y: 78%;
-
-    height: 100px;
-    background-clip: text;
-    -webkit-background-clip: text;
-    p {
-      color: transparent;
-    }
-  }
-  .text-sea {
-    margin-top: 90vh;
-    font-family: "Dot";
-    font-size: 180px;
-    color: $blue;
-    text-align: right;
-    // margin-left: 50vh;
-  }
+  // border: 1px solid blue;
   .whale__wrapper {
-    margin-top: 20vh;
+    margin-top: 200vh;
     margin-bottom: 80vh;
     svg {
       height: 200vh;
@@ -41,5 +19,18 @@
         }
       }
     }
+  }
+}
+
+.across__container {
+  position: relative;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  .text-sea {
+    color: #fc00bd;
+    position: absolute;
+    font-size: 20vw;
+    line-height: 0.8;
   }
 }

@@ -127,16 +127,22 @@ export default class MoonMap {
       FADE OUT ALL ELEMENTS
     ------------------------------*/
 
-    gsap.from(".big-line, .middle-line,  .moon-path, #triangle-up, .circle, .polygon", {
-      scrollTrigger: {
-        scroller: "[data-scroll-container]",
-        trigger: ".voice",
-        start: "bottom bottom",
-        endTrigger: ".voice",
-        end: "center center",
-        scrub: true,
+    gsap.fromTo(
+      ".big-line, .middle-line,  .moon-path, #triangle-up, .circle, .polygon",
+      {
+        scrollTrigger: {
+          scroller: "[data-scroll-container]",
+          trigger: ".voice",
+          start: "bottom top",
+          endTrigger: ".voice",
+          start: "bottom top+=1000",
+          scrub: true,
+        },
+        opacity: 0,
       },
-      opacity: 0,
-    });
+      {
+        opacity: 0,
+      }
+    );
   }
 }

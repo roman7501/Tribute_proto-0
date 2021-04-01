@@ -14,22 +14,7 @@ export default class Sea {
   }
 
   anim() {
-    this.animTextKill();
     this.animWhale();
-  }
-
-  animTextKill() {
-    gsap.to(".kill-wrapper", {
-      scrollTrigger: {
-        scroller: "[data-scroll-container]",
-        trigger: ".kill-wrapper",
-        start: "top bottom",
-      },
-      backgroundPositionX: `-100vw`,
-      repeat: -1,
-      duration: 20,
-      ease: "linear",
-    });
   }
 
   animWhale() {
