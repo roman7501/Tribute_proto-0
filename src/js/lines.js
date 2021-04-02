@@ -28,7 +28,6 @@ export default class Lines {
       },
     });
 
-    let i = 1;
     let offset = 0;
     let opacityPrev = 0.25;
     let opacityCurrent = 1;
@@ -37,9 +36,9 @@ export default class Lines {
       TEXT ACCORDION
     ------------------------------*/
 
-    tl.to(".lines__container", {
-      opacity: 1,
-    });
+    // tl.to(".lines__container", {
+    //   opacity: 1,
+    // });
     tl.from("#text-1", {
       y: offset,
     });

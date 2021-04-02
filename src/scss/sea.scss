@@ -1,6 +1,5 @@
 .sea {
   width: 100%;
-  // border: 1px solid blue;
   .whale__wrapper {
     margin-top: 200vh;
     margin-bottom: 80vh;
@@ -13,6 +12,7 @@
         fill: transparent;
       }
       .text-whale__wrapper {
+        display: none;
         transform-origin: center;
         .text-whale {
           fill: #a3dae3;

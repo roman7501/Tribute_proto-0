@@ -11,6 +11,7 @@ import MoonMap from "../moonMap.js";
 import Reverse from "../reverse.js";
 import Particules from "../particules.js";
 import Sea from "../sea.js";
+import Rewind from "../rewind";
 
 export default class getScrollWithAnims {
   constructor() {
@@ -23,6 +24,7 @@ export default class getScrollWithAnims {
     this.reverse = new Reverse();
     this.particules = new Particules();
     this.sea = new Sea();
+    this.rewind = new Rewind();
     // this.subtitles = new Subtitles();
 
     this.scrollPosition = null;
@@ -72,6 +74,7 @@ export default class getScrollWithAnims {
     this.reverse.anim();
     this.particules.anim();
     this.sea.anim();
+    this.rewind.anim(locoScroll);
     // this.subtitles.anim();
 
     /**

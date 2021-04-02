@@ -1,7 +1,8 @@
 .header {
+  // border: 1px solid yellow;
   position: relative;
   width: 100%;
-  height: 180vh;
+  height: 280vh;
   font-family: jaf-domus-titling-web, sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -12,21 +13,29 @@
     top: 0vw;
     z-index: 2;
     left: 2%;
-    // transform: translate3d(0, -50%, 0);
-
     font-size: 6.5vw;
     text-transform: uppercase;
+    width: 100%;
+    h1 {
+      overflow: hidden;
+    }
+    p {
+      overflow: hidden;
+    }
     .desc {
-      // border: 1px solid white;
-      margin-top: 3vw;
-      margin-left: 40vw;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      // transform: translateX(100%);
+      line-height: 1.3;
       font-size: 1.5vw;
     }
   }
   .top-line {
     font-size: 1.5vw;
-    margin-left: 26vw;
-    margin-top: 10px;
+    margin-left: 32vw;
+    margin-top: 30px;
   }
   .info {
     position: absolute;

@@ -8,20 +8,72 @@
   .text-beau {
     color: $pink;
   }
-  .coming {
-    color: $pink;
+  .coming-back__wrapper {
+    color: $yellow;
     font-size: 10vw;
+    width: 100%;
+    position: relative;
+    height: 100vw;
+    p {
+      position: absolute;
+      opacity: 0;
+    }
+    .youre {
+      // opacity: 1;
+      top: 30vw;
+      left: 10vw;
+      font-size: 7vw;
+    }
+    .coming {
+      // opacity: 1;
+      font-size: 7vw;
+      top: 30vw;
+      left: 40vw;
+      transform: rotate(90deg) translate3d(38%, 130%, 0);
+    }
+    .place {
+      // opacity: 1;
+      font-size: 13vw;
+      top: 55vw;
+      left: 15vw;
+      transform: rotate(180deg);
+    }
+    .where {
+      // opacity: 1;
+      font-size: 27vw;
+      top: 15vw;
+      left: 35vw;
+      transform: rotate(-90deg);
+    }
+    .you {
+      // opacity: 1;
+      font-size: 27vw;
+      top: 68vw;
+      left: 22vw;
+      transform: rotate(-90deg);
+    }
+    .came {
+      // opacity: 1;
+      font-size: 27vw;
+      top: 14vw;
+      left: 16vw;
+      transform: rotate(-90deg);
+    }
+    .from {
+      // opacity: 1;
+      font-size: 27vw;
+      top: 63vw;
+      left: 39vw;
+      transform: rotate(-90deg);
+    }
   }
-  .place {
-    margin-top: 70vh;
-    color: $pink;
-
-    font-size: 10vw;
-  }
+  // .coming-back--trigger {
+  //   margin-top: 370vh;
+  // }
   .lips {
     color: $pink;
     font-size: 6vw;
-    margin-top: 70vh;
+    margin-top: 10vh;
     margin-left: 50vw;
   }
   .kiss {

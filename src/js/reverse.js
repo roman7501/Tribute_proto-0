@@ -39,19 +39,25 @@ export default class Reverse {
       ease: "linear",
     });
 
-    // God appears from right
-    gsap.to(".god", {
-      scrollTrigger: {
-        scroller: "[data-scroll-container]",
-        trigger: ".god",
-        start: "center center",
-        endTrigger: ".catch",
-        end: "top bottom+=200",
-        scrub: true,
+    // Fade in God
+    gsap.fromTo(
+      ".god",
+      {
+        opacity: 0,
       },
-      x: 0,
-      ease: "linear",
-    });
+      {
+        scrollTrigger: {
+          scroller: "[data-scroll-container]",
+          trigger: ".god",
+          start: "center center",
+          endTrigger: ".catch",
+          end: "top bottom+=200",
+          scrub: true,
+        },
+        opacity: 1,
+        ease: "linear",
+      }
+    );
 
     // Small lines leave
     this.tlMoon.to("#small-line-1", {
@@ -95,11 +101,23 @@ export default class Reverse {
   }
 
   animCatch() {
+    // Snap catch
+    ScrollTrigger.create({
+      scroller: "[data-scroll-container]",
+      trigger: ".catch",
+      start: "center center",
+      endTrigger: ".reverse",
+      end: "bottom bottom",
+      scrub: true,
+      pin: true,
+      ease: "linear",
+    });
+
     this.tlCatch = gsap.timeline({
       scrollTrigger: {
         scroller: "[data-scroll-container]",
         trigger: ".catch",
-        start: "center bottom",
+        start: "center center",
         endTrigger: ".reverse",
         end: "bottom bottom",
         scrub: true,
@@ -121,17 +139,23 @@ export default class Reverse {
       "<"
     );
 
-    // Snap catch
-    ScrollTrigger.create({
-      scroller: "[data-scroll-container]",
-      trigger: ".catch",
-      start: "center center",
-      endTrigger: ".reverse",
-      end: "bottom bottom",
-      scrub: true,
-      pin: true,
-      ease: "linear",
-    });
+    // Catch fade in
+    this.tlCatch.fromTo(
+      ".catch",
+      { opacity: 0 },
+      {
+        opacity: 1,
+      },
+      "<"
+    );
+
+    this.tlCatch.to(
+      "#big-line-3, #big-circle, #triangle-up, #triangle-down",
+      {
+        stroke: "#fc00bd",
+      },
+      "<"
+    );
 
     this.tlCatchReverse = gsap.timeline({
       scrollTrigger: {
@@ -195,16 +219,6 @@ export default class Reverse {
     );
 
     /*------------------------------
-      ROTATION II
-    ------------------------------*/
-
-    // this.tlCatchReverse.to("#moon-map__container", {
-    //   transformOrigin: "center",
-    //   scale: 0.7,
-    //   rotate: 100,
-    // });
-
-    /*------------------------------
       NEW CIRCLE
     ------------------------------*/
 
@@ -223,15 +237,6 @@ export default class Reverse {
       "<"
     );
 
-    // Fade out new triangle
-    // this.tlCatchReverse.to(
-    //   "#triangle-up",
-    //   {
-    //     opacity: 0.2,
-    //   },
-    //   "<"
-    // );
-
     // Fade in "How i fell"
     this.tlCatchReverse.to(
       ".fell",
@@ -241,25 +246,93 @@ export default class Reverse {
       "<"
     );
 
-    // Rotate the moon map
-    // this.tlCatchReverse.to(
-    //   ".moon__container",
-    //   {
-    //     transformOrigin: "center",
-    //     opacity: 1,
-    //     rotate: 100,
-    //   },
-    //   "<"
-    // );
+    /*------------------------------
+      ANIM COMING BACK
+    ------------------------------*/
+
+    // Snap position .coming-back
+    ScrollTrigger.create({
+      scroller: "[data-scroll-container]",
+      trigger: ".coming-back__wrapper",
+      start: "center center",
+      endTrigger: ".particules",
+      end: "bottom bottom",
+      scrub: true,
+      pin: true,
+      ease: "linear",
+    });
+
+    this.tlComing = gsap.timeline({
+      scrollTrigger: {
+        scroller: "[data-scroll-container]",
+        trigger: ".coming-back__wrapper",
+        start: "center center",
+        endTrigger: ".particules",
+        end: "bottom bottom",
+        scrub: true,
+        ease: "linear",
+      },
+    });
+
+    // Rotation coming wrapper
+    gsap.fromTo(
+      ".coming-back__wrapper",
+      {
+        rotate: 100,
+      },
+      {
+        scrollTrigger: {
+          scroller: "[data-scroll-container]",
+          trigger: ".coming-back__wrapper",
+          start: "center center",
+          endTrigger: ".particules",
+          end: "bottom bottom",
+          scrub: true,
+          ease: "linear",
+        },
+        rotate: -270,
+      }
+    );
+
+    // Fade text elements coming back
+    this.tlComing.to(".youre", {
+      opacity: 1,
+    });
+
+    this.tlComing.to(
+      ".coming",
+      {
+        opacity: 1,
+      },
+      "<"
+    );
+
+    this.tlComing.to(".place", {
+      opacity: 1,
+    });
+
+    this.tlComing.to(".where, .you, .came, .from", {
+      opacity: 1,
+      stagger: 0.56,
+    });
+
+    this.tlComing.to(
+      ".coming, .place",
+      {
+        opacity: 0.1,
+        delay: 0.5,
+      },
+      "<"
+    );
 
     /*------------------------------
-      ROTATE THE MOONS + THE MOON MAP
+      ROTATE LINES
     ------------------------------*/
     this.tlParticules1 = gsap.timeline({
       scrollTrigger: {
         scroller: "[data-scroll-container]",
-        trigger: ".particules",
-        start: "top bottom",
+        trigger: ".reverse",
+        start: "bottom bottom",
         endTrigger: ".sea",
         end: "bottom bottom",
         scrub: true,
@@ -267,10 +340,6 @@ export default class Reverse {
       },
     });
 
-    this.tlParticules1.to("#big-line-3, #big-circle, #triangle-up, #triangle-down", {
-      stroke: "#fc00bd",
-      duration: 0.1,
-    });
     this.tlParticules1.to(
       ".lines__container",
       {
@@ -278,12 +347,29 @@ export default class Reverse {
       },
       "<"
     );
-    this.tlParticules1.to("#big-line-3, #big-circle, #triangle-up, #triangle-down", {
-      rotate: 18,
-      duration: 2,
-    }),
-      "<";
-
+    this.tlParticules1.to(
+      "#triangle-up",
+      {
+        rotate: -500,
+      },
+      "<"
+    );
+    this.tlParticules1.to(
+      "#triangle-down",
+      {
+        x: -500,
+        rotate: 300,
+      },
+      "<"
+    );
+    // this.tlParticules1.to(
+    //   "#big-line-3, #big-circle, #triangle-up, #triangle-down",
+    //   {
+    //     rotate: 250,
+    //     duration: 2,
+    //   },
+    //   "<"
+    // );
     /*------------------------------
       ANIM ACROSS SEA
     ------------------------------*/
@@ -312,6 +398,21 @@ export default class Reverse {
         duration: 3,
       }
     );
+    this.tlSea.to(
+      ".text-sea",
+      {
+        color: "#2070f0",
+        duration: 12,
+      },
+      "<"
+    );
+    this.tlSea.to(
+      "#triangle-down, #triangle-up, #big-circle, #big-line-3, #big-line-1, .small-line",
+      {
+        stroke: "#2070f0",
+      },
+      "<"
+    );
 
     /*------------------------------
       REVEAL MOON MAP
@@ -334,7 +435,6 @@ export default class Reverse {
       x: 0,
       y: 0,
       rotate: 0,
-      stroke: "#2070f0",
       opacity: 1,
     });
 
@@ -366,7 +466,16 @@ export default class Reverse {
       ".text-sea",
       {
         opacity: 0.1,
-        color: "#2070f0",
+      },
+      "<"
+    );
+    this.tlVoice.to(
+      ".moon-map__container",
+      {
+        x: -200,
+        y: -200,
+        scale: 0.2,
+        delay: 0.4,
       },
       "<"
     );
